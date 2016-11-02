@@ -6,33 +6,58 @@
 public class Player {
 
 
+    private int playerScore = 0;
+    private String playerName;
+    private boolean isPlaying = true;
+    private Card card1;
+    private Card card2;
 
-    private String pName = ""; //store the player's name
+    //getter and setter methods for state
 
-
-
-    private int pScore = 0; //store the player's score
-
-    //private Card currentCard = ; //store what card the player currently holds
-    //private Card currentCard2 = ; //store the card the player picks up on their turn
-
-
-    //getter and setter variables for player name
-    public String getpName() {
-        return pName;
+    public Card getCard2() {
+        return card2;
     }
 
-    public void setpName(String pName) {
-        this.pName = pName;
+    public void setCard2(Card card2) {
+        this.card2 = card2;
     }
 
-    //getter and setter variables for player score
-    public int getpScore() {
-        return pScore;
+    public Card getCard1() {
+        return card1;
     }
 
-    public void setpScore(int pScore) {
-        this.pScore = pScore;
+    public void setCard1(Card card1) {
+        this.card1 = card1;
+    }
+
+    public Player(String name)
+    {
+        playerName = name;
+    }
+
+
+    public void setScore(int score){
+        playerScore = score;
+    }
+
+    public int getPlayerScore(){
+        return playerScore;
+    }
+
+    public void setPlayerName(String name){
+        playerName = name;
+    }
+
+    public String getPlayerName(){
+        return playerName;
+    }
+
+    public void setPlaying(boolean playing){
+        isPlaying = playing;
+    }
+
+    public boolean getIsPlaying(){
+        return isPlaying;
     }
 
 
