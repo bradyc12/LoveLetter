@@ -23,7 +23,7 @@ public class Princess implements Card {
     }
 
     @Override
-    public void specialFunction() {
+    public void specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer31) {
 
     }
 }

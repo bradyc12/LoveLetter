@@ -9,7 +9,7 @@ public interface Card  {
     String getCardAbility();
     String getCardName();
 
-    void specialFunction();
+    void specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3);
 
 
 }
