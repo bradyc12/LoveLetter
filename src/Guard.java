@@ -57,17 +57,20 @@ public class Guard implements Card{
             //check to see if player is still in the round
             if(playerChoice.equals(targetPlayer1.getPlayerName()))
             {
-                if(playerChoice.equals((targetPlayer1.getIsPlaying() == false)))
+                /*if(playerChoice.equals((targetPlayer1.getIsPlaying() == false)))
                 {
-                    System.out.println("This player is out of the round");
+                    System.out.println("This player is already out of the round");
                 }
-                else
-                {
+                else*/
+                //{
 
                     while(true)
                     {
                         System.out.println("Name a card to guess");
                         String cardChoice = sc.nextLine();
+
+
+                        //***this causes the guess to break
 
                         /*if(cardChoice.equals("Guard") || (!cardChoice.equals("Priest") || !cardChoice.equals("Baron") || !cardChoice.equals("Handmaid") || !cardChoice.equals("Prince") || !cardChoice.equals("King") || !cardChoice.equals("Countess") || !cardChoice.equals("Princess") ))
                         {
@@ -75,17 +78,24 @@ public class Guard implements Card{
                         }
                         else
                         {*/
-                            if(cardChoice.equals(playerChoice.equals(targetPlayer1.getCard1().getCardName())))
+                            if(cardChoice.equals(targetPlayer1.getCard1().getCardName()))
                             {
                                 System.out.println("You've guessed correctly! Player " + targetPlayer1.getPlayerName() + " is out of the round");
                                 targetPlayer1.setPlaying(false);
+                                System.out.println(targetPlayer1.getPlayerName() + " 's isPlaying variable is set to " + targetPlayer1.getIsPlaying());
                                 break;
                             }
-                            else
+
+                            //something should happen here about what if the card chosen is a guard....not sure, something to do with game mechanics
+                            else if((cardChoice.equals("Priest") || cardChoice.equals("Baron") || cardChoice.equals("Handmaid") || cardChoice.equals("Prince") || cardChoice.equals("King") || cardChoice.equals("Countess") || cardChoice.equals("Princess") ))
                             {
                                 System.out.println("Player " +  targetPlayer1.getPlayerName() + " does not have that card.");
-                                System.out.println(targetPlayer1.getCard1().getCardName());
                                 break;
+                            }
+
+                            else
+                            {
+                                System.out.println("Sorry, please chose your card again");
                             }
 
                         //}
@@ -94,7 +104,7 @@ public class Guard implements Card{
                     }
                     break;
 
-                }
+                //}
             }
             if(!playerChoice.equals(targetPlayer1) || !playerChoice.equals(targetPlayer2) || !playerChoice.equals(targetPlayer3) || !playerChoice.equals(currentPlayer))
             {
