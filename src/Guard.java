@@ -49,10 +49,10 @@ public class Guard implements Card{
             {
                 System.out.println("DON'T BE A FOOL - CHOOSE ANOTHER PLAYER");
             }
-            else if(!playerChoice.equals(targetPlayer1) || !playerChoice.equals(targetPlayer2) || !playerChoice.equals(targetPlayer3))
+            /*if(!playerChoice.equals(targetPlayer1) || !playerChoice.equals(targetPlayer2) || !playerChoice.equals(targetPlayer3) || !playerChoice.equals(currentPlayer))
             {
                 System.out.println("What?!");
-            }
+            }*/
 
             //check to see if player is still in the round
             if(playerChoice.equals(targetPlayer1.getPlayerName()))
@@ -95,6 +95,10 @@ public class Guard implements Card{
                     break;
 
                 }
+            }
+            if(!playerChoice.equals(targetPlayer1) || !playerChoice.equals(targetPlayer2) || !playerChoice.equals(targetPlayer3) || !playerChoice.equals(currentPlayer))
+            {
+                System.out.println("What?!");
             }
 
 
