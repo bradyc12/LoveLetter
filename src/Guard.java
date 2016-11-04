@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Guard implements Card{
 
     private int cardValue = 2;
-    private String cardName = "Guard";
+    private String cardName = "guard";
     private String cardAbility = "this is the guard's ability";
     Scanner sc = new Scanner(System.in);
 
@@ -41,7 +41,8 @@ public class Guard implements Card{
         {
             System.out.println("Choose a player");
             String playerChoice = sc.nextLine();
-            playerChoice.toLowerCase();
+            playerChoice = playerChoice.toLowerCase();
+            System.out.println(playerChoice);
 
 
 
@@ -69,8 +70,14 @@ public class Guard implements Card{
                     {
                         System.out.println("Name a card to guess");
                         String cardChoice = sc.nextLine();
+                        cardChoice = cardChoice.toLowerCase();
 
-                        if(cardChoice.equals(targetPlayer1.getCard1().getCardName()))
+                        if(cardChoice.equals(this.cardName))
+                        {
+                            System.out.println("You cannot chose the guard card.");
+                        }
+
+                        else if(cardChoice.equals(targetPlayer1.getCard1().getCardName()))
                         {
                             System.out.println("You've guessed correctly! Player " + targetPlayer1.getPlayerName() + " is out of the round");
                             targetPlayer1.setPlaying(false);
@@ -79,7 +86,7 @@ public class Guard implements Card{
                         }
 
                         //something should happen here about what if the card chosen is a guard....not sure, something to do with game mechanics
-                        else if((cardChoice.equals("Priest") || cardChoice.equals("Baron") || cardChoice.equals("Handmaid") || cardChoice.equals("Prince") || cardChoice.equals("King") || cardChoice.equals("Countess") || cardChoice.equals("Princess") ))
+                        else if((cardChoice.equals("priest") || cardChoice.equals("baron") || cardChoice.equals("handmaid") || cardChoice.equals("prince") || cardChoice.equals("king") || cardChoice.equals("countess") || cardChoice.equals("princess") ))
                         {
                             System.out.println("Player " +  targetPlayer1.getPlayerName() + " does not have that card.");
                             break;
@@ -113,8 +120,14 @@ public class Guard implements Card{
                     {
                         System.out.println("Name a card to guess");
                         String cardChoice = sc.nextLine();
+                        cardChoice = cardChoice.toLowerCase();
 
-                        if(cardChoice.equals(targetPlayer2.getCard1().getCardName()))
+                        if(cardChoice.equals(this.cardName))
+                        {
+                            System.out.println("You cannot chose the guard card.");
+                        }
+
+                        else if(cardChoice.equals(targetPlayer2.getCard1().getCardName()))
                         {
                             System.out.println("You've guessed correctly! Player " + targetPlayer2.getPlayerName() + " is out of the round");
                             targetPlayer2.setPlaying(false);
@@ -123,7 +136,7 @@ public class Guard implements Card{
                         }
 
                         //something should happen here about what if the card chosen is a guard....not sure, something to do with game mechanics
-                        else if((cardChoice.equals("Priest") || cardChoice.equals("Baron") || cardChoice.equals("Handmaid") || cardChoice.equals("Prince") || cardChoice.equals("King") || cardChoice.equals("Countess") || cardChoice.equals("Princess") ))
+                        else if((cardChoice.equals("priest") || cardChoice.equals("baron") || cardChoice.equals("handmaid") || cardChoice.equals("prince") || cardChoice.equals("king") || cardChoice.equals("countess") || cardChoice.equals("princess") ))
                         {
                             System.out.println("Player " +  targetPlayer2.getPlayerName() + " does not have that card.");
                             break;
@@ -157,8 +170,14 @@ public class Guard implements Card{
                     {
                         System.out.println("Name a card to guess");
                         String cardChoice = sc.nextLine();
+                        cardChoice = cardChoice.toLowerCase();
 
-                        if(cardChoice.equals(targetPlayer3.getCard1().getCardName()))
+                        if(cardChoice.equals(this.cardName))
+                        {
+                            System.out.println("You cannot chose the guard card.");
+                        }
+
+                        else if(cardChoice.equals(targetPlayer3.getCard1().getCardName()))
                         {
                             System.out.println("You've guessed correctly! Player " + targetPlayer3.getPlayerName() + " is out of the round");
                             targetPlayer3.setPlaying(false);
@@ -167,7 +186,7 @@ public class Guard implements Card{
                         }
 
                         //something should happen here about what if the card chosen is a guard....not sure, something to do with game mechanics
-                        else if((cardChoice.equals("Priest") || cardChoice.equals("Baron") || cardChoice.equals("Handmaid") || cardChoice.equals("Prince") || cardChoice.equals("King") || cardChoice.equals("Countess") || cardChoice.equals("Princess") ))
+                        else if((cardChoice.equals("priest") || cardChoice.equals("baron") || cardChoice.equals("handmaid") || cardChoice.equals("prince") || cardChoice.equals("king") || cardChoice.equals("countess") || cardChoice.equals("princess") ))
                         {
                             System.out.println("Player " +  targetPlayer3.getPlayerName() + " does not have that card.");
                             break;
