@@ -91,7 +91,7 @@ public class Guard implements Card{
                         }
 
                     }
-
+                    break;
                 }
 
 
@@ -135,7 +135,7 @@ public class Guard implements Card{
                         }
 
                     }
-
+                    break;
                 }
 
 
@@ -179,7 +179,7 @@ public class Guard implements Card{
                         }
 
                     }
-
+                    break;
                 }
 
 
@@ -201,7 +201,7 @@ public class Guard implements Card{
                 System.out.println("What?!");
             }
 
-        break;
+
         }
 
 
