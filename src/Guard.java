@@ -58,8 +58,8 @@ public class Guard implements Card{
             //check to see if targetPlayer1 is still in the round and do targetPlayer1 stuff
             else if(playerChoice.equals(targetPlayer1.getPlayerName()))
             {
-                //needs work... needs to be part of the loop?
-                if(targetPlayer1.getIsPlaying() == false)
+                //changed to cater for handmaid card
+                if((targetPlayer1.getIsPlaying() == false) || (targetPlayer1.isPlayedHandmaid() == true))
                 {
                     System.out.println("This player is already out of the round");
 
@@ -108,8 +108,8 @@ public class Guard implements Card{
             //check to see if targetPlayer2 is still in the round and do targetPlayer1 stuff
             else if(playerChoice.equals(targetPlayer2.getPlayerName()))
             {
-                //needs work... needs to be part of the loop?
-                if(targetPlayer2.getIsPlaying() == false)
+                //changed to cater for handmaid card
+                if((targetPlayer1.getIsPlaying() == false) || (targetPlayer1.isPlayedHandmaid() == true))
                 {
                     System.out.println("This player is already out of the round");
 
@@ -158,8 +158,8 @@ public class Guard implements Card{
             //check to see if targetPlayer3 is still in the round and do targetPlayer1 stuff
             else if(playerChoice.equals(targetPlayer3.getPlayerName()))
             {
-                //needs work... needs to be part of the loop?
-                if(targetPlayer3.getIsPlaying() == false)
+                //changed to cater for handmaid card
+                if((targetPlayer1.getIsPlaying() == false) || (targetPlayer1.isPlayedHandmaid() == true))
                 {
                     System.out.println("This player is already out of the round");
 

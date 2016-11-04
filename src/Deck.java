@@ -43,34 +43,34 @@ public class Deck {
             deck[i] = new Guard();
         }
 
-        //2 princes
-        for(int i=5; i<7; i++)
-        {
-            deck[i] = new Prince();
-        }
-
-        //2 Handmaids
-        for(int i=7; i<9; i++)
-        {
-            deck[i] = new Handmaid();
-        }
-
-        //2 Barons
-        for(int i=9; i<11; i++)
-        {
-            deck[i] = new Baron();
-        }
-
         //Two priests
-        for(int i=11; i<13; i++)
+        for(int i=5; i<7; i++)
         {
             deck[i] = new Priest();
         }
 
-        //One Prince, Countess, King
-        deck[13] = new Prince();
+        //2 Barons
+        for(int i=7; i<9; i++)
+        {
+            deck[i] = new Baron();
+        }
+
+        //2 Handmaids
+        for(int i=9; i<11; i++)
+        {
+            deck[i] = new Handmaid();
+        }
+
+        //2 princes
+        for(int i=11; i<13; i++)
+        {
+            deck[i] = new Prince();
+        }
+
+        //One King, Countess and Princess
+        deck[13] = new King();
         deck[14] = new Countess();
-        deck[15] = new King();
+        deck[15] = new Princess();
     }
 
 }

@@ -9,6 +9,7 @@ public class Player {
     private int playerScore = 0;
     private String playerName;
     private boolean isPlaying = true;
+    private boolean playedHandmaid = true; //** needed to see if someone had played a handmaid
     private Card card1;
     private Card card2;
 
@@ -58,6 +59,14 @@ public class Player {
 
     public boolean getIsPlaying(){
         return isPlaying;
+    }
+
+    public boolean isPlayedHandmaid() {
+        return playedHandmaid;
+    }
+
+    public void setPlayedHandmaid(boolean playedHandmaid) {
+        this.playedHandmaid = playedHandmaid;
     }
 
 

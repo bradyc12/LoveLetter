@@ -1,11 +1,5 @@
 import java.util.Scanner;
 
-/**
- * this is the main class for love letter.
- * Here the game will start and end.
- *
- * Created by padcf on 01/11/16.
- */
 public class Main {
     public static void main(String[] args)
     {
@@ -43,24 +37,67 @@ public class Main {
         Player [] playerOrder = new Player [4];
         playerOrder = randomPlayer(playerOrder, player1, player2, player3, player4);
 
-        deckLength = dealCard(playerOrder[0], deckLength, deck1);
+        //changed method name to dealCard2 for clarity
+        deckLength = dealCard2(playerOrder[0], deckLength, deck1);
 
         System.out.println(playerOrder[0].getPlayerName() + " is first" + "\nChoose a card to play" +
                 "\n" + playerOrder[0].getCard1().getCardName() + "\n" + playerOrder[0].getCard2().getCardName() +
                 "\nType 1 for " + playerOrder[0].getCard1().getCardName() + " or 2 for " + playerOrder[0].getCard2().getCardName());
 
-        int choice = sc.nextInt();
+        int choice = 0;
 
+        // if player has countess in hand check for prince or king also in hand
+        // if above is true only allow player to choose countess
+        while(true) {
+            // scan player choice
+            choice = sc.nextInt();
+            // check for countess in card1 slot
+            if (playerOrder[0].getCard1().getCardName().equals("countess")) {
+                if (playerOrder[0].getCard2().getCardName().equals("prince") || playerOrder[0].getCard2().getCardName().equals("king")) {
+                    // if there is a prince or king in card2 slot and player has chosen card slot 2 get player to choose card until chooses card1 slot
+                    if (choice == 2) {
+                        System.out.println("You must choose the Countess \nPlease enter a new choice");
+                    }
+                    else{
+                        break;
+                    }
+                }
+                else{
+                    break;
+                }
+            }
+            // same as above but for opposite card slots
+            else if (playerOrder[0].getCard2().getCardName().equals("countess")) {
+                if (playerOrder[0].getCard1().getCardName().equals("prince") || playerOrder[0].getCard1().getCardName().equals("king")) {
+                    if (choice == 1) {
+                        System.out.println("You must choose the Countess \nPlease enter a new choice");
+                    }
+                    else{
+                        break;
+                    }
+                }
+                else{
+                    break;
+                }
+            }
+            else{
+                break;
+            }
+        }
+
+        // print out player names and their cards (cards for debugging reasons as usual it's hidden information)
         for(int i=0; i < 4; i++)
         {
             System.out.println(playerOrder[i].getPlayerName() + " has a " + playerOrder[i].getCard1().getCardName());
         }
 
+        // if player doesn't have a countess with either a king or prince also in hand execute player choice
         if(choice == 1){
-            playerOrder[0].getCard1().specialFunction(player1, player2, player3, player4);
+            playerOrder[0].getCard1().specialFunction(playerOrder[0], playerOrder[1], playerOrder[2], playerOrder[3]);
         }else{
-            playerOrder[0].getCard2().specialFunction(player1, player2, player3, player4);
+            playerOrder[0].getCard2().specialFunction(playerOrder[0], playerOrder[1], playerOrder[2], playerOrder[3]);
         }
+
 
 
 
@@ -95,7 +132,7 @@ public class Main {
         return deckLength;
     }
 
-    public static int dealCard(Player player, int deckLength, Card[] deck){
+    public static int dealCard2(Player player, int deckLength, Card[] deck){
         player.setCard2(deck[deckLength]);
         deckLength--;
         return deckLength;
