@@ -9,7 +9,7 @@ public class Player {
     private int playerScore = 0;
     private String playerName;
     private boolean isPlaying = true;
-    private boolean playedHandmaid = true; //** needed to see if someone had played a handmaid
+    private boolean playedHandmaid = false; //** needed to see if someone had played a handmaid
     private Card card1;
     private Card card2;
 
