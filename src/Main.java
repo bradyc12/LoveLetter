@@ -1,3 +1,10 @@
+/**
+ * this is the main class for love letter.
+ * Here the game will start and end.
+ *
+ * Created by padcf on 01/11/16.
+ */
+
 import java.util.Scanner;
 
 public class Main {
@@ -9,7 +16,7 @@ public class Main {
         mainDeck.shuffleDeck(); //shuffle the deck
         Card[] deck1 = mainDeck.getDeck(); //get the deck and store it in deck1 variable
 
-        int deckLength = deck1.length;
+        int deckLength = deck1.length-1;
 
         //PLAYER SETUP
         Scanner sc = new Scanner(System.in);
@@ -85,6 +92,15 @@ public class Main {
             }
         }
 
+        //check for Prince
+        //if prince -- pass relevant info to deal card if used
+        if(playerOrder[0].getCard1().getCardName().equals("prince")){
+
+        }
+        else if(playerOrder[0].getCard2().getCardName().equals("prince")){
+
+        }
+
         // print out player names and their cards (cards for debugging reasons as usual it's hidden information)
         for(int i=0; i < 4; i++)
         {
@@ -93,9 +109,9 @@ public class Main {
 
         // if player doesn't have a countess with either a king or prince also in hand execute player choice
         if(choice == 1){
-            playerOrder[0].getCard1().specialFunction(playerOrder[0], playerOrder[1], playerOrder[2], playerOrder[3]);
+            deckLength = playerOrder[0].getCard1().specialFunction(playerOrder[0], playerOrder[1], playerOrder[2], playerOrder[3], deckLength, deck1);
         }else{
-            playerOrder[0].getCard2().specialFunction(playerOrder[0], playerOrder[1], playerOrder[2], playerOrder[3]);
+            deckLength = playerOrder[0].getCard2().specialFunction(playerOrder[0], playerOrder[1], playerOrder[2], playerOrder[3], deckLength, deck1);
         }
 
 

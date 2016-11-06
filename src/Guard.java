@@ -2,13 +2,15 @@
  * This class create the Guard card and has the guard card functionality
  * Created by padcf on 01/11/16.
  */
+
 import java.util.Scanner;
 
-public class Guard implements Card{
+public class Guard implements Card {
 
-    private int cardValue = 2;
+    private int cardValue = 1;
     private String cardName = "guard";
-    private String cardAbility = "this is the guard's ability";
+    private String cardAbility = "Name a non-Guard card and choose another player. \nIf that player has that card, he or she is out of the round.";
+
     Scanner sc = new Scanner(System.in);
 
     @Override
@@ -27,14 +29,14 @@ public class Guard implements Card{
     }
 
     @Override
-    public void specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3) {
+    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck) {
 
-        System.out.println("Current player: " + currentPlayer.getPlayerName() + " isPlaying = " + currentPlayer.getIsPlaying());
-        System.out.println("Target player 1: " +targetPlayer1.getPlayerName()+ " isPlaying = " + targetPlayer1.getIsPlaying());
-        System.out.println("Target player 2: " +targetPlayer2.getPlayerName()+ " isPlaying = " + targetPlayer2.getIsPlaying());
-        System.out.println("Target player 3: " +targetPlayer3.getPlayerName()+ " isPlaying = " + targetPlayer3.getIsPlaying());
+        System.out.println("Current player: " + currentPlayer.getPlayerName());
+        System.out.println("Target player 1: " + targetPlayer1.getPlayerName());
+        System.out.println("Target player 2: " + targetPlayer2.getPlayerName());
+        System.out.println("Target player 3: " + targetPlayer3.getPlayerName());
 
-        //having chosen guard card, we now want ot chose a player to apply that card on.
+        //having chosen guard card, we now want to choose a player to apply that card on.
         //loop around until a player has been chosen. Then do what needs to be done.
 
         while(true)
@@ -58,8 +60,8 @@ public class Guard implements Card{
             //check to see if targetPlayer1 is still in the round and do targetPlayer1 stuff
             else if(playerChoice.equals(targetPlayer1.getPlayerName()))
             {
-                //changed to cater for handmaid card
-                if((targetPlayer1.getIsPlaying() == false) || (targetPlayer1.isPlayedHandmaid() == true))
+
+                if(!targetPlayer1.getIsPlaying() || targetPlayer1.isPlayedHandmaid())
                 {
                     System.out.println("This player is already out of the round");
 
@@ -85,7 +87,7 @@ public class Guard implements Card{
                             break;
                         }
 
-                        //something should happen here about what if the card chosen is a guard....not sure, something to do with game mechanics
+
                         else if((cardChoice.equals("priest") || cardChoice.equals("baron") || cardChoice.equals("handmaid") || cardChoice.equals("prince") || cardChoice.equals("king") || cardChoice.equals("countess") || cardChoice.equals("princess") ))
                         {
                             System.out.println("Player " +  targetPlayer1.getPlayerName() + " does not have that card.");
@@ -105,11 +107,11 @@ public class Guard implements Card{
 
             }
 
-            //check to see if targetPlayer2 is still in the round and do targetPlayer1 stuff
+            //check to see if targetPlayer2 is still in the round and do targetPlayer2 stuff
             else if(playerChoice.equals(targetPlayer2.getPlayerName()))
             {
-                //changed to cater for handmaid card
-                if((targetPlayer1.getIsPlaying() == false) || (targetPlayer1.isPlayedHandmaid() == true))
+
+                if(!targetPlayer2.getIsPlaying() || targetPlayer2.isPlayedHandmaid())
                 {
                     System.out.println("This player is already out of the round");
 
@@ -135,7 +137,7 @@ public class Guard implements Card{
                             break;
                         }
 
-                        //something should happen here about what if the card chosen is a guard....not sure, something to do with game mechanics
+
                         else if((cardChoice.equals("priest") || cardChoice.equals("baron") || cardChoice.equals("handmaid") || cardChoice.equals("prince") || cardChoice.equals("king") || cardChoice.equals("countess") || cardChoice.equals("princess") ))
                         {
                             System.out.println("Player " +  targetPlayer2.getPlayerName() + " does not have that card.");
@@ -155,11 +157,11 @@ public class Guard implements Card{
 
             }
 
-            //check to see if targetPlayer3 is still in the round and do targetPlayer1 stuff
+            //check to see if targetPlayer3 is still in the round and do targetPlayer3 stuff
             else if(playerChoice.equals(targetPlayer3.getPlayerName()))
             {
-                //changed to cater for handmaid card
-                if((targetPlayer1.getIsPlaying() == false) || (targetPlayer1.isPlayedHandmaid() == true))
+
+                if(!targetPlayer3.getIsPlaying() || targetPlayer3.isPlayedHandmaid())
                 {
                     System.out.println("This player is already out of the round");
 
@@ -185,7 +187,7 @@ public class Guard implements Card{
                             break;
                         }
 
-                        //something should happen here about what if the card chosen is a guard....not sure, something to do with game mechanics
+
                         else if((cardChoice.equals("priest") || cardChoice.equals("baron") || cardChoice.equals("handmaid") || cardChoice.equals("prince") || cardChoice.equals("king") || cardChoice.equals("countess") || cardChoice.equals("princess") ))
                         {
                             System.out.println("Player " +  targetPlayer3.getPlayerName() + " does not have that card.");
@@ -225,6 +227,6 @@ public class Guard implements Card{
 
 
 
-
+        return length;
     }
 }
