@@ -11,6 +11,7 @@ public class Player {
     private boolean isPlaying = true;
     private Card card1;
     private Card card2;
+    private boolean playedHandmaid = false;
 
     //getter and setter methods for state
 
@@ -60,5 +61,11 @@ public class Player {
         return isPlaying;
     }
 
+    public boolean isPlayedHandmaid() {
+        return playedHandmaid;
+    }
 
+    public void setPlayedHandmaid(boolean playedHandmaid) {
+        this.playedHandmaid = playedHandmaid;
+    }
 }

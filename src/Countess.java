@@ -2,9 +2,9 @@
  * Created by padcf on 01/11/16.
  */
 public class Countess implements Card {
-    private int cardValue = 2;
-    private String cardName = "Countess";
-    private String cardAbility = "this is the Countess's ability";
+    private int cardValue = 7;
+    private String cardName = "countess";
+    private String cardAbility = "If you have this card and the King or Prince in your hand, \nyou must discard this card";
 
 
     @Override
@@ -23,7 +23,9 @@ public class Countess implements Card {
     }
 
     @Override
-    public void specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3) {
+    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck) {
 
+        System.out.println(currentPlayer.getPlayerName() + " has discarded a Countess");
+        return length;
     }
 }

@@ -2,9 +2,9 @@
  * Created by padcf on 01/11/16.
  */
 public class Handmaid implements Card{
-    private int cardValue = 2;
-    private String cardName = "Handmaid";
-    private String cardAbility = "this is the Handmaid's ability";
+    private int cardValue = 4;
+    private String cardName = "handmaid";
+    private String cardAbility = "Until your next turn, ignore all effects from other players' cards.";
 
 
     @Override
@@ -23,7 +23,10 @@ public class Handmaid implements Card{
     }
 
     @Override
-    public void specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3) {
-
+    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck) {
+        //currentPlayer.setPlayedHandmaid(true); commented out because testing rest of program and can't figure out how to keep track of handmaid
+        System.out.println("You are immune this round.");
+        //System.out.println(currentPlayer.isPlayedHandmaid());
+        return length;
     }
 }
