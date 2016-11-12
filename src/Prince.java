@@ -48,14 +48,14 @@ public class Prince implements Card{
                 //check if you are discarding a princess
                 //if above is true you are out of the round... numpty!
                 if(currentPlayer.getCard1().getCardName().equals("prince") && currentPlayer.getCard2().getCardName().equals("princess")){
-                    currentPlayer.setPlaying(false);
-                    System.out.println("You've discarded a princess \nYou are out of the game");
-                    break;
+                        currentPlayer.setPlaying(false);
+                        System.out.println("You've discarded a princess \nYou are out of the game");
+                        break;
                 }
                 else if(currentPlayer.getCard2().getCardName().equals("prince") && currentPlayer.getCard1().getCardName().equals("princess")){
-                    currentPlayer.setPlaying(false);
-                    System.out.println("You've discarded a princess \nYou are out of the game");
-                    break;
+                        currentPlayer.setPlaying(false);
+                        System.out.println("You've discarded a princess \nYou are out of the game");
+                        break;
                 }
                 else {
                     currentPlayer.setCard1(deck[length]);

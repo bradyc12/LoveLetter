@@ -33,7 +33,7 @@ public class King implements Card {
         System.out.println("Target player 2: " + targetPlayer2.getPlayerName());
         System.out.println("Target player 3: " + targetPlayer3.getPlayerName());
         //test
-        System.out.println(currentPlayer.getCard1().getCardName() + " " + currentPlayer.getCard2().getCardName() + " " + targetPlayer2.getCard1().getCardName());
+        //System.out.println(currentPlayer.getCard1().getCardName() + " " + currentPlayer.getCard2().getCardName() + " " + targetPlayer2.getCard1().getCardName());
 
         //having chosen king card, we now want to choose a player to apply that card on.
         //loop around until a player has been chosen. Then do what needs to be done.

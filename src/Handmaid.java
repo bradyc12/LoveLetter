@@ -24,9 +24,9 @@ public class Handmaid implements Card{
 
     @Override
     public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck) {
-        currentPlayer.setPlayedHandmaid(true);
-        System.out.println("You sit out this round.");
-        System.out.println(currentPlayer.isPlayedHandmaid());
+        //currentPlayer.setPlayedHandmaid(true); commented out because testing rest of program and can't figure out how to keep track of handmaid
+        System.out.println("You are immune this round.");
+        //System.out.println(currentPlayer.isPlayedHandmaid());
         return length;
     }
 }

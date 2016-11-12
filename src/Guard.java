@@ -76,14 +76,14 @@ public class Guard implements Card {
 
                         if(cardChoice.equals(this.cardName))
                         {
-                            System.out.println("You cannot chose the guard card.");
+                            System.out.println("You cannot choose the guard card.");
                         }
 
                         else if(cardChoice.equals(targetPlayer1.getCard1().getCardName()))
                         {
                             System.out.println("You've guessed correctly! Player " + targetPlayer1.getPlayerName() + " is out of the round");
                             targetPlayer1.setPlaying(false);
-                            System.out.println(targetPlayer1.getPlayerName() + " 's isPlaying variable is set to " + targetPlayer1.getIsPlaying());
+                            System.out.println(targetPlayer1.getPlayerName() + "'s isPlaying variable is set to " + targetPlayer1.getIsPlaying());
                             break;
                         }
 
@@ -111,7 +111,7 @@ public class Guard implements Card {
             else if(playerChoice.equals(targetPlayer2.getPlayerName()))
             {
 
-                if(!targetPlayer2.getIsPlaying() || targetPlayer2.isPlayedHandmaid())
+                if(!targetPlayer1.getIsPlaying() || targetPlayer2.isPlayedHandmaid())
                 {
                     System.out.println("This player is already out of the round");
 
@@ -133,7 +133,7 @@ public class Guard implements Card {
                         {
                             System.out.println("You've guessed correctly! Player " + targetPlayer2.getPlayerName() + " is out of the round");
                             targetPlayer2.setPlaying(false);
-                            System.out.println(targetPlayer2.getPlayerName() + " 's isPlaying variable is set to " + targetPlayer2.getIsPlaying());
+                            System.out.println(targetPlayer2.getPlayerName() + "'s isPlaying variable is set to " + targetPlayer2.getIsPlaying());
                             break;
                         }
 
@@ -161,7 +161,7 @@ public class Guard implements Card {
             else if(playerChoice.equals(targetPlayer3.getPlayerName()))
             {
 
-                if(!targetPlayer3.getIsPlaying() || targetPlayer3.isPlayedHandmaid())
+                if(!targetPlayer1.getIsPlaying() || targetPlayer3.isPlayedHandmaid())
                 {
                     System.out.println("This player is already out of the round");
 
@@ -183,7 +183,7 @@ public class Guard implements Card {
                         {
                             System.out.println("You've guessed correctly! Player " + targetPlayer3.getPlayerName() + " is out of the round");
                             targetPlayer3.setPlaying(false);
-                            System.out.println(targetPlayer3.getPlayerName() + " 's isPlaying variable is set to " + targetPlayer3.getIsPlaying());
+                            System.out.println(targetPlayer3.getPlayerName() + "'s isPlaying variable is set to " + targetPlayer3.getIsPlaying());
                             break;
                         }
 
