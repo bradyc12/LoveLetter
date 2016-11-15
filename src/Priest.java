@@ -29,6 +29,11 @@ public class Priest implements Card {
     @Override
     public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck) {
 
+        System.out.println("Current player: " + currentPlayer.getPlayerName());
+        System.out.println("Target player 1: " + targetPlayer1.getPlayerName());
+        System.out.println("Target player 2: " + targetPlayer2.getPlayerName());
+        System.out.println("Target player 3: " + targetPlayer3.getPlayerName());
+
         //the current player gets to view the card of the target player
         Scanner sc = new Scanner(System.in);
         while(true)
