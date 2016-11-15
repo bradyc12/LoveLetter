@@ -1,8 +1,8 @@
 /**
- * this is the main class for love letter.
+ * this is the main class for Love Letter.
  * Here the game will start and end.
  *
- * Created by padcf on 01/11/16.
+ * Created by padcf & paulvincentphillips on 01/11/16.
  */
 
 import java.util.Scanner;
@@ -26,6 +26,12 @@ public class Main {
         Deck mainDeck = new Deck(); //instantiate the deck of cards
         mainDeck.populateDeck(); // populate the deck
 
+        // Random player order - create array to hold order of play
+        // First round is random
+        // every round thereafter - winner goes first
+        Player[] playerOrder = new Player[4];
+        playerOrder = randomPlayer(playerOrder, player1, player2, player3, player4);
+
         //game loop
         //this sets up each round of the game -- a round ends when all players' turns are finished and a player either wins a point, or wins the game
         while (true) {
@@ -42,13 +48,6 @@ public class Main {
             //this method will only work for starting hands as method stores cards in Card1 slot only
             deckLength = dealCards(player1, player2, player3, player4, deckLength, deck1);
 
-            // Random player order - create array to hold order of play
-            // First round is random
-            // every round thereafter - winner goes first
-            // deal extra card to first player
-            Player[] playerOrder = new Player[4];
-            playerOrder = randomPlayer(playerOrder, player1, player2, player3, player4);
-
             int turnOrder = 0;
             int turnOrder2 = 1;
             int turnOrder3 = 2;
@@ -58,13 +57,15 @@ public class Main {
             //this will be every turn of a round ie. each player's go
             while (true) {
 
-                if(playerOrder[turnOrder].getIsPlaying() == true) {
+                //if current player is in the round do this - otherwise go to else statement
+                if(playerOrder[turnOrder].getIsPlaying()) {
                     //reset handmaid ability from true to false
                     playerOrder[turnOrder].setPlayedHandmaid(false);
 
                     //deal 2nd card to current player
                     deckLength = dealCard2(playerOrder[turnOrder], deckLength, deck1);
 
+                    //choose a card to play -- press 1 for card 1 and 2 for card 2
                     System.out.println(playerOrder[turnOrder].getPlayerName() + "\nChoose a card to play" +
                             "\nType 1 for " + playerOrder[turnOrder].getCard1().getCardName() + " or 2 for " + playerOrder[turnOrder].getCard2().getCardName());
 
@@ -84,7 +85,7 @@ public class Main {
                                 } else {
                                     break;
                                 }
-                            } else {
+                            }else{
                                 break;
                             }
                         }
@@ -137,19 +138,19 @@ public class Main {
                     if (isOutCount == 3) {
                         if (player1.getIsPlaying()) {
                             player1.setScore(player1.getPlayerScore() + 1);
-                            System.out.println(player1.getPlayerName() + " has won the round!");
+                            System.out.println(player1.getPlayerName() + " is the last player standing and has won the round!");
                             break;
                         } else if (player2.getIsPlaying()) {
                             player2.setScore(player2.getPlayerScore() + 1);
-                            System.out.println(player2.getPlayerName() + " has won the round!");
+                            System.out.println(player2.getPlayerName() + " is the last player standing and has won the round!");
                             break;
                         } else if (player3.getIsPlaying()) {
                             player3.setScore(player3.getPlayerScore() + 1);
-                            System.out.println(player3.getPlayerName() + " has won the round!");
+                            System.out.println(player3.getPlayerName() + " is the last player standing and has won the round!");
                             break;
                         } else {
                             player4.setScore(player4.getPlayerScore() + 1);
-                            System.out.println(player4.getPlayerName() + " has won the round!");
+                            System.out.println(player4.getPlayerName() + " is the last player standing and has won the round!");
                             break;
                         }
                     }
@@ -176,22 +177,22 @@ public class Main {
 
                         if (cardVal1 > cardVal2 && cardVal1 > cardVal3 && cardVal1 > cardVal4) {
                             player1.setScore(player1.getPlayerScore() + 1);
-                            System.out.println(player1.getPlayerName() + " has won the round!");
+                            System.out.println(player1.getPlayerName() + " has the highest value card and has won the round!");
                             break;
                         } else if (cardVal2 > cardVal1 && cardVal2 > cardVal3 && cardVal2 > cardVal4) {
                             player2.setScore(player2.getPlayerScore() + 1);
-                            System.out.println(player2.getPlayerName() + " has won the round!");
+                            System.out.println(player2.getPlayerName() + " has the highest value card and has won the round!");
                             break;
                         } else if (cardVal3 > cardVal1 && cardVal3 > cardVal2 && cardVal3 > cardVal4) {
                             player3.setScore(player3.getPlayerScore() + 1);
-                            System.out.println(player3.getPlayerName() + " has won the round!");
+                            System.out.println(player3.getPlayerName() + " has the highest value card and has won the round!");
                             break;
                         } else if (cardVal4 > cardVal1 && cardVal4 > cardVal2 && cardVal4 > cardVal3) {
                             player4.setScore(player4.getPlayerScore() + 1);
-                            System.out.println(player4.getPlayerName() + " has won the round!");
+                            System.out.println(player4.getPlayerName() + " has the highest value card and has won the round!");
                             break;
                         } else {
-                            System.out.println("This round is a draw!");
+                            System.out.println("No one has the highest value card\nThis round is a draw!");
                             break;
                         }
                     }
@@ -229,6 +230,7 @@ public class Main {
            System.out.println(player4.getPlayerName() + "'s card is: " + player4.getCard1().getCardName());
            System.out.println("The remaining number of cards in the deck is: " + deckLength);*/
                 }
+                //if player is out of game and above if statement was not executed -- update player order and move to next turn
                 else{
                     //next player
                     if (turnOrder == 3) {
@@ -257,21 +259,37 @@ public class Main {
                     }
                 }
             }
+            System.out.println(player1.getPlayerName() + "'s score is " + player1.getPlayerScore());
+            System.out.println(player2.getPlayerName() + "'s score is " + player2.getPlayerScore());
+            System.out.println(player3.getPlayerName() + "'s score is " + player3.getPlayerScore());
+            System.out.println(player4.getPlayerName() + "'s score is " + player4.getPlayerScore());
+
+            System.out.println("New round!");
+
+            player1.setPlayedHandmaid(false);
+            player1.setPlaying(true);
+            player2.setPlayedHandmaid(false);
+            player2.setPlaying(true);
+            player3.setPlayedHandmaid(false);
+            player3.setPlaying(true);
+            player4.setPlayedHandmaid(false);
+            player4.setPlaying(true);
+
             //check to see if any player has reached the goal of getting 4 points, winning the game -- break out of game loop
             if(player1.getPlayerScore() == 4) {
-                System.out.println(player1.getPlayerName() + " has won the game!");
+                System.out.println(player1.getPlayerName() + " has earned 4 points, winning the game!");
                 break;
             }
             else if(player2.getPlayerScore() == 4) {
-                System.out.println(player2.getPlayerName() + " has won the game!");
+                System.out.println(player2.getPlayerName() + " has earned 4 points, winning the game!");
                 break;
             }
             else if(player3.getPlayerScore() == 4) {
-                System.out.println(player3.getPlayerName() + " has won the game!");
+                System.out.println(player3.getPlayerName() + " has earned 4 points, winning the game!");
                 break;
             }
             else if(player4.getPlayerScore() == 4) {
-                System.out.println(player4.getPlayerName() + " has won the game!");
+                System.out.println(player4.getPlayerName() + " has earned 4 points, winning the game!");
                 break;
             }
         }

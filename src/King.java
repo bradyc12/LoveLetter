@@ -1,6 +1,8 @@
 /**
- * Created by padcf on 01/11/16.
+ * This class creates the King card which contains functionality and attributes unique to this class
+ * Created by padcf & paulvincentphillips on 01/11/16.
  */
+
 import java.util.Scanner;
 
 public class King implements Card {
@@ -28,10 +30,7 @@ public class King implements Card {
     @Override
     public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck) {
 
-        System.out.println("Current player: " + currentPlayer.getPlayerName());
-        System.out.println("Target player 1: " + targetPlayer1.getPlayerName());
-        System.out.println("Target player 2: " + targetPlayer2.getPlayerName());
-        System.out.println("Target player 3: " + targetPlayer3.getPlayerName());
+
         //test
         //System.out.println(currentPlayer.getCard1().getCardName() + " " + currentPlayer.getCard2().getCardName() + " " + targetPlayer2.getCard1().getCardName());
 
@@ -39,10 +38,26 @@ public class King implements Card {
         //loop around until a player has been chosen. Then do what needs to be done.
 
         while (true) {
+            System.out.println("Current player: " + currentPlayer.getPlayerName());
+            System.out.println("You can target:");
+            if(targetPlayer1.getIsPlaying() && !targetPlayer1.isPlayedHandmaid()){
+                System.out.println(targetPlayer1.getPlayerName());
+            }
+            if(targetPlayer2.getIsPlaying() && !targetPlayer2.isPlayedHandmaid()){
+                System.out.println(targetPlayer2.getPlayerName());
+            }
+            if(targetPlayer3.getIsPlaying() && !targetPlayer3.isPlayedHandmaid()){
+                System.out.println(targetPlayer3.getPlayerName());
+            }
+            if((!targetPlayer1.getIsPlaying() || targetPlayer1.isPlayedHandmaid()) && (!targetPlayer2.getIsPlaying() || targetPlayer2.isPlayedHandmaid()) && (!targetPlayer3.getIsPlaying() || targetPlayer3.isPlayedHandmaid())){
+                System.out.println("No player can be targeted this round\nYour card is discarded and your turn is over");
+                break;
+            }
+
             System.out.println("Choose a player");
             String playerChoice = sc.nextLine();
             playerChoice = playerChoice.toLowerCase();
-            System.out.println(playerChoice);
+            //System.out.println(playerChoice);
 
 
             //deal with exceptional input
@@ -54,10 +69,14 @@ public class King implements Card {
             //check to see if targetPlayer1 is still in the round and do targetPlayer1 stuff
             else if (playerChoice.equals(targetPlayer1.getPlayerName())) {
 
-                if (!targetPlayer1.getIsPlaying() || targetPlayer1.isPlayedHandmaid()) {
+                if (!targetPlayer1.getIsPlaying()) {
                     System.out.println("This player is already out of the round");
 
-                }else {
+                }
+                else if(targetPlayer1.isPlayedHandmaid()){
+                    System.out.println("This player has played the handmaid and is immune until their next turn");
+                }
+                else {
                     //check to see which card slot is currently occupied by king
                     //then swap card which isn't king with target player and vice versa
                     if(currentPlayer.getCard1().getCardName().equals("king")){
@@ -72,16 +91,20 @@ public class King implements Card {
                         currentPlayer.setCard1(temp);
 
                     }
+                    System.out.println("You have traded hands with " + targetPlayer1.getPlayerName());
                 }
             }
 
             //check to see if targetPlayer2 is still in the round and do targetPlayer2 stuff
             else if (playerChoice.equals(targetPlayer2.getPlayerName())) {
 
-                if (!targetPlayer2.getIsPlaying() || targetPlayer2.isPlayedHandmaid()) {
+                if (!targetPlayer2.getIsPlaying()) {
                     System.out.println("This player is already out of the round");
-
-                }else {
+                }
+                else if(targetPlayer2.isPlayedHandmaid()){
+                    System.out.println("This player has played the handmaid and is immune until their next turn");
+                }
+                else {
                     //check to see which card slot is currently occupied by king
                     //then swap card which isn't king with target player and vice versa
                     if(currentPlayer.getCard1().getCardName().equals("king")){
@@ -94,16 +117,20 @@ public class King implements Card {
                         targetPlayer2.setCard1(currentPlayer.getCard1());
                         currentPlayer.setCard1(temp);
                     }
+                    System.out.println("You have traded hands with " + targetPlayer2.getPlayerName());
                 }
             }
 
             //check to see if targetPlayer3 is still in the round and do targetPlayer3 stuff
             else if (playerChoice.equals(targetPlayer3.getPlayerName())) {
 
-                if (!targetPlayer3.getIsPlaying() || targetPlayer3.isPlayedHandmaid()) {
+                if (!targetPlayer3.getIsPlaying()) {
                     System.out.println("This player is already out of the round");
-
-                }else {
+                }
+                else if(targetPlayer3.isPlayedHandmaid()){
+                    System.out.println("This player has played the handmaid and is immune until their next turn");
+                }
+                else {
                     //check to see which card slot is currently occupied by king
                     //then swap card which isn't king with target player and vice versa
                     if(currentPlayer.getCard1().getCardName().equals("king")){
@@ -116,10 +143,11 @@ public class King implements Card {
                         targetPlayer3.setCard1(currentPlayer.getCard1());
                         currentPlayer.setCard1(temp);
                     }
+                    System.out.println("You have traded hands with " + targetPlayer3.getPlayerName());
                 }
             }
             //test
-            System.out.println(currentPlayer.getCard1().getCardName() + " " + targetPlayer2.getCard1().getCardName());
+            //System.out.println(currentPlayer.getCard1().getCardName() + " " + targetPlayer2.getCard1().getCardName());
             break;
         }
         return length;
