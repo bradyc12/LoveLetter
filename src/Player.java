@@ -1,7 +1,7 @@
 /**
  * Player objects will track player score, whether a player is still in a round and store things
- * like player name
- * Created by padcf on 01/11/16.
+ * like player name, score etc.
+ * Created by padcf & paulvincentphillips on 01/11/16.
  */
 public class Player {
 

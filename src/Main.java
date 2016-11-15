@@ -78,16 +78,14 @@ public class Main {
                         choice = sc.nextInt();
                         // check for countess in card1 slot
                         if (playerOrder[turnOrder].getCard1().getCardName().equals("countess")) {
-                            if (playerOrder[turnOrder].getCard2().getCardName().equals("prince") || playerOrder[0].getCard2().getCardName().equals("king"))
-                            {
+                            if (playerOrder[turnOrder].getCard2().getCardName().equals("prince") || playerOrder[0].getCard2().getCardName().equals("king")) {
                                 // if there is a prince or king in card2 slot and player has chosen card slot 2 get player to choose card until chooses card1 slot
                                 if (choice == 2) {
                                     System.out.println("You must choose the Countess \nPlease enter a new choice");
                                 } else {
                                     break;
                                 }
-                            }else
-                            {
+                            }else{
                                 break;
                             }
                         }

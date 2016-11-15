@@ -1,8 +1,10 @@
+/**
+ * This class creates the Baron card which contains functionality and attributes unique to this class
+ * Created by padcf & paulvincentphillips on 01/11/16.
+ */
+
 import java.util.Scanner;
 
-/**
- * Created by padcf on 01/11/16.
- */
 public class Baron implements Card {
     private int cardValue = 3;
     private String cardName = "baron";
@@ -27,10 +29,7 @@ public class Baron implements Card {
     @Override
     public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck) {
 
-        System.out.println("Current player: " + currentPlayer.getPlayerName());
-        System.out.println("Target player 1: " + targetPlayer1.getPlayerName());
-        System.out.println("Target player 2: " + targetPlayer2.getPlayerName());
-        System.out.println("Target player 3: " + targetPlayer3.getPlayerName());
+
 
         //having chosen guard card, we now want to choose a player to apply that card on.
         //loop around until a player has been chosen. Then do what needs to be done.
@@ -40,10 +39,26 @@ public class Baron implements Card {
 
         while(true)
         {
+            System.out.println("Current player: " + currentPlayer.getPlayerName());
+            System.out.println("You can target:");
+            if(targetPlayer1.getIsPlaying() && !targetPlayer1.isPlayedHandmaid()){
+                System.out.println(targetPlayer1.getPlayerName());
+            }
+            if(targetPlayer2.getIsPlaying() && !targetPlayer2.isPlayedHandmaid()){
+                System.out.println(targetPlayer2.getPlayerName());
+            }
+            if(targetPlayer3.getIsPlaying() && !targetPlayer3.isPlayedHandmaid()){
+                System.out.println(targetPlayer3.getPlayerName());
+            }
+            if((!targetPlayer1.getIsPlaying() || targetPlayer1.isPlayedHandmaid()) && (!targetPlayer2.getIsPlaying() || targetPlayer2.isPlayedHandmaid()) && (!targetPlayer3.getIsPlaying() || targetPlayer3.isPlayedHandmaid())){
+                System.out.println("No player can be targeted this round\nYour card is discarded and your turn is over");
+                break;
+            }
+
             System.out.println("Choose a player");
             String playerChoice = sc.nextLine();
             playerChoice = playerChoice.toLowerCase();
-            System.out.println(playerChoice);
+            //System.out.println(playerChoice);
 
 
 
@@ -60,17 +75,20 @@ public class Baron implements Card {
             else if(playerChoice.equals(targetPlayer1.getPlayerName()))
             {
 
-                if(!targetPlayer1.getIsPlaying() || targetPlayer1.isPlayedHandmaid())
+                if(!targetPlayer1.getIsPlaying())
                 {
                     System.out.println("This player is already out of the round");
 
+                }
+                else if(targetPlayer1.isPlayedHandmaid()){
+                    System.out.println("This player has played the handmaid and is immune until their next turn");
                 }
                 else
                 {
                     if(!currentPlayer.getCard1().getCardName().equals("baron"))
                     {
-                        System.out.println(currentPlayer.getPlayerName() + "'s card is a: " + currentPlayer.getCard1().getCardName());
-                        System.out.println(targetPlayer1.getPlayerName() + "'s card is a: " + targetPlayer1.getCard1().getCardName());
+                        System.out.println(currentPlayer.getPlayerName() + "'s card is a " + currentPlayer.getCard1().getCardName());
+                        System.out.println(targetPlayer1.getPlayerName() + "'s card is a " + targetPlayer1.getCard1().getCardName());
 
                         if(currentPlayer.getCard1().getCardValue() > targetPlayer1.getCard1().getCardValue())
                         {
@@ -89,8 +107,8 @@ public class Baron implements Card {
                     }
                     else if(!currentPlayer.getCard2().getCardName().equals("baron"))
                     {
-                        System.out.println(currentPlayer.getPlayerName() + "'s card is a: " + currentPlayer.getCard2().getCardName());
-                        System.out.println(targetPlayer1.getPlayerName() + "'s card is a: " + targetPlayer1.getCard1().getCardName());
+                        System.out.println(currentPlayer.getPlayerName() + "'s card is a " + currentPlayer.getCard2().getCardName());
+                        System.out.println(targetPlayer1.getPlayerName() + "'s card is a " + targetPlayer1.getCard1().getCardName());
 
                         if(currentPlayer.getCard2().getCardValue() > targetPlayer1.getCard1().getCardValue())
                         {
@@ -120,17 +138,20 @@ public class Baron implements Card {
             else if(playerChoice.equals(targetPlayer2.getPlayerName()))
             {
 
-                if(!targetPlayer2.getIsPlaying() || targetPlayer2.isPlayedHandmaid())
+                if(!targetPlayer2.getIsPlaying())
                 {
                     System.out.println("This player is already out of the round");
 
+                }
+                else if(targetPlayer2.isPlayedHandmaid()){
+                    System.out.println("This player has played the handmaid and is immune until their next turn");
                 }
                 else
                 {
                     if(!currentPlayer.getCard1().getCardName().equals("baron"))
                     {
-                        System.out.println(currentPlayer.getPlayerName() + "'s card is a: " + currentPlayer.getCard1().getCardName());
-                        System.out.println(targetPlayer2.getPlayerName() + "'s card is a: " + targetPlayer2.getCard1().getCardName());
+                        System.out.println(currentPlayer.getPlayerName() + "'s card is a " + currentPlayer.getCard1().getCardName());
+                        System.out.println(targetPlayer2.getPlayerName() + "'s card is a " + targetPlayer2.getCard1().getCardName());
 
                         if(currentPlayer.getCard1().getCardValue() > targetPlayer2.getCard1().getCardValue())
                         {
@@ -180,10 +201,13 @@ public class Baron implements Card {
             else if(playerChoice.equals(targetPlayer3.getPlayerName()))
             {
 
-                if(!targetPlayer3.getIsPlaying() || targetPlayer3.isPlayedHandmaid())
+                if(!targetPlayer3.getIsPlaying())
                 {
                     System.out.println("This player is already out of the round");
 
+                }
+                else if(targetPlayer3.isPlayedHandmaid()){
+                    System.out.println("This player has played the handmaid and is immune until their next turn");
                 }
                 else
                 {

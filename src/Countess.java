@@ -1,6 +1,8 @@
 /**
- * Created by padcf on 01/11/16.
+ * This class creates the Countess card which contains functionality and attributes unique to this class
+ * Created by padcf & paulvincentphillips on 01/11/16.
  */
+
 public class Countess implements Card {
     private int cardValue = 7;
     private String cardName = "countess";
