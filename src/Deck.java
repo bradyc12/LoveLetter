@@ -1,10 +1,8 @@
-import java.awt.*;
-
 /**
  * This is the Deck class. This will create and organise the various cards
  * in an array.
  * You will be able to randomise the array, etc.
- * Created by padcf on 01/11/16.
+ * Created by padcf & paulvincentphillips on 01/11/16.
  */
 
 

@@ -1,3 +1,8 @@
+/**
+ * This class creates the Princess card which contains functionality and attributes unique to this class
+ * Created by padcf & paulvincentphillips on 01/11/16.
+ */
+
 public class Princess implements Card {
     private int cardValue = 8;
     private String cardName = "princess";
